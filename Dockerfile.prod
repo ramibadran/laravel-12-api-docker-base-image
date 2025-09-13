@@ -16,8 +16,5 @@ RUN docker-php-ext-install mysqli pdo pdo_mysql bcmath curl opcache mbstring
 # Copy composer executable.
 COPY --from=composer:2.3.5 /usr/bin/composer /usr/bin/composer
 
-# Install Xdebug
-RUN pecl install xdebug && docker-php-ext-enable xdebug
-
 # Install Redis
 RUN pecl install -o -f redis && rm -rf /tmp/pear && docker-php-ext-enable redis
